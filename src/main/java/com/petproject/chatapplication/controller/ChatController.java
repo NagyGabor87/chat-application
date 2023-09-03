@@ -1,5 +1,6 @@
-package com.petproject.chatapplication.chat;
+package com.petproject.chatapplication.controller;
 
+import com.petproject.chatapplication.model.ChatMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -22,7 +23,7 @@ public class ChatController {
 
     @MessageMapping("/private-message")
     public ChatMessage receivePrivateMessage (@Payload ChatMessage chatMessage) {
-        messagingTemplate.convertAndSendToUser(chatMessage.getSender(), "/private", chatMessage);
+        messagingTemplate.convertAndSendToUser(chatMessage.getReceiverName(), "/private", chatMessage);
         return chatMessage;
     }
 

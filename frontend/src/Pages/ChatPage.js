@@ -33,7 +33,7 @@ const ChatPage = () => {
     const userJoin = () => {
         let chatMessage = {
             senderName : userData.username,
-            status : "JOIN"
+            type : "JOIN"
         };
 
         stompClient.send("/app/message", {}, JSON.stringify(chatMessage));
@@ -41,11 +41,11 @@ const ChatPage = () => {
 
     const onMessageReceived = (payload) => {
         let payloadData = JSON.parse(payload.body);
-        switch (payloadData.status) {
+        switch (payloadData.type) {
             case "JOIN":
                 if (!privateChat.get(payloadData.senderName)) {
                     privateChat.set(payloadData.senderName, []);
-                    setPrivateChat(privateChat);
+                    setPrivateChat(new Map(privateChat));
                 }
                 break;
             case "CHAT":
@@ -82,7 +82,7 @@ const ChatPage = () => {
             let chatMessage = {
                 senderName: userData.username,
                 message: userData.message,
-                status:"CHAT"
+                type:"CHAT"
             }
             stompClient.send("/app/message", {}, JSON.stringify(chatMessage));
             setUserData({...userData, "message": ""});
@@ -95,7 +95,7 @@ const ChatPage = () => {
                 senderName : userData.username,
                 receiverName : tab,
                 message: userData.message,
-                status : "CHAT"
+                type : "CHAT"
             }
             if (userData.username !== tab) {
                 privateChat.get(tab).push(chatMessage);
@@ -115,7 +115,7 @@ const ChatPage = () => {
         connect();
     }
     return (
-        <div className="container">
+        <div className="container-base">
             {userData.connected?
                 <div className="chat-box">
                     <div className="member-list">

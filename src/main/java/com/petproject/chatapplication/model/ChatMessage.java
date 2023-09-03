@@ -1,4 +1,4 @@
-package com.petproject.chatapplication.chat;
+package com.petproject.chatapplication.model;
 
 import lombok.*;
 
@@ -6,10 +6,10 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ToString
 public class ChatMessage {
-    private String content;
-    private String sender;
+    private String message;
+    private String receiverName;
+    private String senderName;
     private MessageType type;
 }
