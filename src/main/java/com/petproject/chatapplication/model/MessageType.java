@@ -1,4 +1,4 @@
-package com.petproject.chatapplication.chat;
+package com.petproject.chatapplication.model;
 
 public enum MessageType {
     CHAT,
