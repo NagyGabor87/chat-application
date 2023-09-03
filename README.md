@@ -33,18 +33,30 @@ Name of the members are highlighted in different colors while chatting
 
 If you want to run Spring Boot from the JAR file in the terminal/console: 
 
-when you are in the project folder, just simply write "mvn package" and run it
+when you are in the project folder, just simply write "mvn package" and run it, or use the mvn spring-boot:run command:
+
+        cd <repo folder>
+
+        mvn spring-boot:run / mvn package
+
 this will create a target folder with a JAR file inside (remember the name of it, you will need it in the next step)
-after that enter the target folder and run the following command :java -jar "name of the JAR file".jar
+after that enter the target folder and run the following command :
+
+       java -jar <name of the JAR file>.jar
+
 and Spring Boot is now running in your terminal.
 
 To run the frontend from the console as well, you need to open another terminal.
 with this one you need to be in the frontend folder of the project
-If you already have npm installed on your computer: 
+If you already have npm installed on your computer:
 run the "npm start" command to start your frontend.
+
+    npm start
 If you don't have it installed:
 run the npm install command, and after that run the npm start 
 (if there is any issue with the start, you can run npm audit fix-- force to solve issues)
+
+    npm install - npm audit fix-- force (if needed)
 
 If you run the project from an IDE like IntelliJ:
 
